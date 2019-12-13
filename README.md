@@ -5,7 +5,7 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 
 # Using DOSBox via webassembly - prerequisites
 
-* Get urself the neccessary tools to port to webassembly, follow https://webassembly.org/getting-started/developers-guide/
+* Get yourself the neccessary tools to port to webassembly, follow https://webassembly.org/getting-started/developers-guide/
 * Git is usefull but you don't have to use it
 * You need CMake for the `<make>` process
 * A compiler like GCC could be neccessary
@@ -14,14 +14,33 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 
 # Getting DOSBox to work
 
+We tried using the instructions in the `README-dream`, but with it no game was running. After searching for a solution we followed the steps below to get the games to run with DOSBox.
+ 
 * According to https://github.com/dreamlayers/em-dosbox/issues/49 the following changes to `<./src/Makefile.am>` where made:
   * line 21
     * changed to <dosbox_LDFLAGS=-s TOTAL_MEMORY=134217728 -s ALLOW_MEMORY_GROWTH=0 **-s FORCE_FILESYSTEM=1**>
   * line 32
     * changed to <dosbox_LDFLAGS+=-s WASM=1 **-s 'BINARYEN_TRAP_MODE="clamp"'**>
-* Followed the instructions for compiling from the README-dream
+* Followed the instructions for compiling from the `README-dream`
   * ran `<./autogen.sh>`
   * ! For the next step the emscripten toolchain is needed, if not available run `<source ./emsdk_env.sh --build=Release>` in emsdk folder
   * ran `<emconfigur ./configure --enable-wasm --disable-sync>`
   * ran `<make>` to build
+
+
+# Running Games
+
+To get the neccessary HTML files to run the games, we followed the descriptions in `README-dream` in the topic `Running DOS Programms`
+
+Here is what we did step by step:
+* First we got some DOSGames from https://www.dosgamesarchive.com/ namely:
+  * rogue - freeware
+  * c-dogs - freeware
+  * Z - playable Demo
+  * Beneath a steel sky (BASS) - full version
+* extracted the files to:
+  * `<./src/rogue/>`
+  * `<./src/c-dogs/>`
+  * `<./src/z/>`
+  * `<./src/steelsky/>`
 
