@@ -14,14 +14,14 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 
 # Getting DOSBox to work
 
-* According to https://github.com/dreamlayers/em-dosbox/issues/49 the following changes to <./src/Makefile.am> where made:
-** line 21
-*** change to <dosbox_LDFLAGS=-s TOTAL_MEMORY=134217728 -s ALLOW_MEMORY_GROWTH=0 **-s FORCE_FILESYSTEM=1**>
-** line 32
-*** change to <dosbox_LDFLAGS+=-s WASM=1 **-s 'BINARYEN_TRAP_MODE="clamp"'**>
+* According to https://github.com/dreamlayers/em-dosbox/issues/49 the following changes to `<./src/Makefile.am>` where made:
+  * line 21
+    * change to `<dosbox_LDFLAGS=-s TOTAL_MEMORY=134217728 -s ALLOW_MEMORY_GROWTH=0 **-s FORCE_FILESYSTEM=1**>`
+  * line 32
+    * change to <dosbox_LDFLAGS+=-s WASM=1 **-s 'BINARYEN_TRAP_MODE="clamp"'**>
 * Following the instructions for compiling from the README-dream
-** ran `<./autogen.sh>`
-** ! For the next step the emscripten toolchain is needed, if not available run `<source ./emsdk_env.sh --build=Release>` in emsdk folder
-** ran `<emconfigur ./configure --enable-wasm --disable-sync>`
-** ran `<make>` to build
+  * ran `<./autogen.sh>`
+  * ! For the next step the emscripten toolchain is needed, if not available run `<source ./emsdk_env.sh --build=Release>` in emsdk folder
+  * ran `<emconfigur ./configure --enable-wasm --disable-sync>`
+  * ran `<make>` to build
 
