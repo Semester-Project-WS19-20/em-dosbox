@@ -24,7 +24,7 @@ We tried using the instructions in the `README-dream`, but with it no game was r
 * Followed the instructions for compiling from the `README-dream`
   * ran `<./autogen.sh>`
   * ! For the next step the emscripten toolchain is needed, if not available run `<source ./emsdk_env.sh --build=Release>` in emsdk folder
-  * ran `<emconfigur ./configure --enable-wasm --disable-sync>`
+  * ran `<emconfigure ./configure --enable-wasm --disable-sync>`
   * ran `<make>` to build
 
 
