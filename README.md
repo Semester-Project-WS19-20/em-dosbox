@@ -48,6 +48,7 @@ Here is what we did step by step:
   * ran `<./packager.py c-dogs c-dogs CDOGS.EXE>`
   * ran `<./packager.py z z Z.BAT>`
   * ran `<./packager.py steelsky steelsky SKY.EXE>`
+* We added the .html and .data files of each game to the .gitignore file so we won't commit them
 * To test if the html files are working we used the web server from the emscripten SDK:
   * ran `<emrun --no_browser --port 8080 .`> in the html directory
 
@@ -61,7 +62,7 @@ Following these steps we encountered some problems with each game as follows:
 * z
   * demo starts normal but without sound
 * steelsky
-  *unable to start game, "Error reading data disk"
+  * unable to start game, "Error reading data disk"
 
 ## Solutions
 
