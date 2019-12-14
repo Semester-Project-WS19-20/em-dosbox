@@ -48,3 +48,26 @@ Here is what we did step by step:
   * ran `<./packager.py c-dogs c-dogs CDOGS.EXE>`
   * ran `<./packager.py z z Z.BAT>`
   * ran `<./packager.py steelsky steelsky SKY.EXE>`
+* To test if the html files are working we used the web server from the emscripten SDK:
+  * ran `<emrun --no_browser --port 8080 .`> in the html directory
+
+## Problems
+
+Following these steps we encountered some problems with each game as follows:
+* rogue
+  * keymapping doesn't work correctly, neither german nor english layout matches
+* c-dogs
+  * game works but game velocity is way to high, if you start a game you loose instantly
+* z
+  * demo starts normal but without sound
+* steelsky
+  *unable to start game, "Error reading data disk"
+
+## Solutions
+
+To fix discribed problems we are trying to use individual `<dosbox.conf>` files for each game as follows:
+* get a copy of the general `<dosbox.conf>` file, source actually not known
+* adjust the `<dosbox.conf>` file to fix problems
+* place the individual `<dosbox.conf>` file in the game folder e.g. src/rogue/
+* rerun `<./packager.py>` for each game
+* test results
