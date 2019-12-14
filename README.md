@@ -38,9 +38,13 @@ Here is what we did step by step:
   * c-dogs - freeware
   * Z - playable Demo
   * Beneath a steel sky (BASS) - full version
-* extracted the files to:
-  * `<./src/rogue/>`
-  * `<./src/c-dogs/>`
-  * `<./src/z/>`
-  * `<./src/steelsky/>`
-
+* Extracted the files as follows:
+  * ran `<unzip rogue.zip -d ~/project-dosbox/src/rogue/>`
+  * ran `<unzip c-dogs.zip -d ~/project-dosbox/src/c-dogs/>`
+  * ran `<unzip z.zip -d ~/project-dosbox/src/z/>`
+  * ran `<unzip steelsky.zip -d ~/project-dosbox/src/steelsky/>`
+* Next step is to package the gamefiles and create the .html and .data files to run with DOSBox. Therefore we used the `<packager.py>` as discribed:
+  * ran `<./packager.py rogue rogue ROGUE.EXE>`
+  * ran `<./packager.py c-dogs c-dogs CDOGS.EXE>`
+  * ran `<./packager.py z z Z.BAT>`
+  * ran `<./packager.py steelsky steelsky SKY.EXE>`
