@@ -28,6 +28,7 @@ Makefile
 .deps
 /a.out
 /a.out.js
+/a.out.wasm
 
 # Compiled files
 
@@ -44,6 +45,14 @@ Makefile
 /src/dosbox.asm.js
 /src/dosbox.wasm
 /src/dosbox.wast
+/src/c-dogs.data
+/src/c-dogs.html
+/src/rogue.data
+/src/rogue.html
+/src/steelsky.data
+/src/steelsky.html
+/src/z.data
+/src/z.html
 
 # Miscellaneous files
 
