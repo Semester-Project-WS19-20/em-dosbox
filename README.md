@@ -40,6 +40,7 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 * in your /dosbox/src/ folder run ```emrun --no_browser --port 8080 .```
 * open a browser
 * go to `localhost:8080/`
+* click on `dosbox.html`
 
 ## Run Games
 In this repository we included the following games:
@@ -57,6 +58,7 @@ To get the neccessary HTML files to run the games, following the descriptions in
 * We added the .html and .data files of each game to the .gitignore file so we won't commit them
 * To test if the html files are working use the web server from the emscripten SDK:
   * run ```emrun --no_browser --port 8080 .``` in your `/dosbox/src/` directory
+  * click on the `.html` file of the game
 
 ## Problems
 There are several unsolved problems with the games:
