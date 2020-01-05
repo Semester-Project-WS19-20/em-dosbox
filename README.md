@@ -1,11 +1,13 @@
-# Approach
+# Porting games to webasembly
 
 For our Semesterproject "porting games to webassembly" we decided to port a whole emulator to run games on it. Therefore we forked the em-dosbox from dreamlayers (https://github.com/dreamlayers/em-dosbox.git) and adapted it for our purposes.
 
 
-# Getting startet
+## Getting Startet
 
-* We recommend using ubuntu 16.04LTS
+We recommend using ubuntu 16.04LTS
+
+### Prerequisites
 * Get git to clone this repository and the emscripten repository
 * Get yourself the neccessary tools to port to webassembly, follow https://webassembly.org/getting-started/developers-guide/
   * If you are using the latest toolchain you will run into an error ```BINARYEN_TRAP_MODE is not supported by the LLVM wasm backend``` therefore we use the fastcomp backend `1.39.5-fastcomp`
@@ -21,9 +23,8 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
   * You need Python 2.7.x, be shure to have it parallel to Python 3.x
 
 
-# Step by step guide to run games in ubuntu 16.04LTS
-
-## Get a working DOSBox in webasembly
+### Installing
+#### DOSBox in webasembly
 * Clone our repository em-dosbox with git
 * Following the instructions from `README-dream`
   * ! make sure emscritpen toolchain is available, if not go to emsdk folder and run ```source ./emsdk_env.sh --build=Release```
@@ -36,7 +37,7 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
   * run ```emconfigure ./configure --enable-wasm --disable-sync```
   * run ```make``` to build
 
-## Test your DOSBox
+## Running the tests
 * in your /dosbox/src/ folder run ```emrun --no_browser --port 8080 .```
 * open a browser
 * go to `localhost:8080/`
@@ -60,7 +61,7 @@ To get the neccessary HTML files to run the games, following the descriptions in
   * run ```emrun --no_browser --port 8080 .``` in your `/dosbox/src/` directory
   * click on the `.html` file of the game
 
-## Problems
+### Problems
 There are several unsolved problems with the games:
 * rogue
   * keymapping doesn't work correctly, neither german nor english layout matches
@@ -71,7 +72,7 @@ There are several unsolved problems with the games:
 * steelsky
   * unable to start game, "Error reading data disk"
 
-## Suggested Solutions
+### Suggested Solutions
 To fix discribed problems it might work to use individual `dosbox.conf` files for each game as follows:
 * get a copy of the general `dosbox.conf` file, source actually not known
 * adjust the `dosbox.conf` file to fix problems
@@ -87,7 +88,7 @@ If you want to run other games do as follows:
 * Proceed with packaging from **Run Games**
 
 
-# Changes to dreamlayers DOSBox
+## Changes to dreamlayers DOSBox
 
 Here are the changes we made to the dreamlayers DOSBox as we encountered some errors
  
@@ -98,3 +99,18 @@ Here are the changes we made to the dreamlayers DOSBox as we encountered some er
     * changed to _dosbox_LDFLAGS+=-s WASM=1 **-s 'BINARYEN_TRAP_MODE="clamp"'**_
 * With the HTML5 API update we ran into the error `exception thrown: SyntaxError: '' is not a valid selector` to fix this annother change in ```./src/Makefile.am``` was neccessary, see also https://github.com/emscripten-core/emscripten/issues/8732
   * line 21 changed to _dosbox_LDFLAGS=-s TOTAL_MEMORY=134217728 -s ALLOW_MEMORY_GROWTH=0 -s FORCE_FILESYSTEM=1 **-s DISABLE_DEPRECATED_FIND_EVENT_TARGET_BEHAVIOR=0**_
+
+
+## Authors
+
+* Benjamin Schrickel - Initial work - [dreamlayers](https://github.com/dreamlayers)
+
+## License
+
+This project, except the gamefiles, is licensed under the GNU GENERAL PUBLIC LICENSE see [COPYING](https://github.com/Semester-Project-WS19-20/em-dosbox/blob/em-dosbox-svn-sdl2/COPYING)
+
+## Acknowledgments
+
+* [Shrikant Lavhate](https://kerneltalks.com/troubleshooting/how-to-resolve-aclocal-not-found-error-in-ubuntu/) for the missing aclocal fix
+* [TommyGER](https://github.com/dreamlayers/em-dosbox/issues/49) for the fix to make games run
+* [gabrielcuvillier](https://github.com/emscripten-core/emscripten/issues/8732) for the HTML5 API fix
