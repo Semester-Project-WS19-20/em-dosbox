@@ -8,7 +8,7 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 * We recommend using ubuntu 16.04LTS
 * Get git to clone this repository and the emscripten repository
 * Get yourself the neccessary tools to port to webassembly, follow https://webassembly.org/getting-started/developers-guide/
-  * If you are using the latest toolchain you will run into an error ```BINARYEN_TRAP_MODE is not supported by the LLVM wasm backend``` therefore we use the fastcomp backend
+  * If you are using the latest toolchain you will run into an error ```BINARYEN_TRAP_MODE is not supported by the LLVM wasm backend``` therefore we use the fastcomp backend `1.39.5-fastcomp`
   * Get the fastcomp emscripten toolchain for your system
     * for ubuntu 16.04LTS do the following
       * git clone https://github.com/emscripten-core/emsdk.git
