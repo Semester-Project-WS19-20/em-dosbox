@@ -12,7 +12,7 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
   * Get the fastcomp emscripten toolchain for your system
     * for ubuntu 16.04LTS do the following
       * git clone https://github.com/emscripten-core/emsdk.git
-      * got to your emsdk folder
+      * go to your emsdk folder
       * intead of running ```./emsdk install latest``` run ```./emsdk install latest-fastcomp```
       * same goes for ```./emsdk activate latest``` run ```./emsdk activate latest-fastcomp```
       * run ```source ./emsdk_env.sh --build=Release```
@@ -24,7 +24,7 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 # Step by step guide to run games in ubuntu 16.04LTS
 
 ## Get a working DOSBox in webasembly
-* Clone our repository em-dosbox https://github.com/Semester-Project-WS19-20/em-dosbox.git with git
+* Clone our repository em-dosbox with git
 * Following the instructions from `README-dream`
   * ! make sure emscritpen toolchain is available, if not go to emsdk folder and run ```source ./emsdk_env.sh --build=Release```
   * go to your dosbox folder
@@ -43,7 +43,6 @@ For our Semesterproject "porting games to webassembly" we decided to port a whol
 
 ## Run Games
 In this repository we included the following games:
-
 * rogue - freeware
 * c-dogs - freeware
 * Z - playable Demo
@@ -57,7 +56,7 @@ To get the neccessary HTML files to run the games, following the descriptions in
   * for BASS run ```./packager.py steelsky steelsky SKY.EXE```
 * We added the .html and .data files of each game to the .gitignore file so we won't commit them
 * To test if the html files are working use the web server from the emscripten SDK:
-  * run ```emrun --no_browser --port 8080 .``` in the html directory
+  * run ```emrun --no_browser --port 8080 .``` in your `/dosbox/src/` directory
 
 ## Problems
 There are several unsolved problems with the games:
@@ -82,6 +81,7 @@ To fix discribed problems it might work to use individual `dosbox.conf` files fo
 If you want to run other games do as follows:
 * Get the gamedata for your game (we got ours from https://www.dosgamesarchive.com/)
 * Extract the gamefiles into your `/dosbox/src/` folder
+* Get an `dosbox.conf` file for your game, or create one and add it to the gamefolder
 * Proceed with packaging from **Run Games**
 
 
