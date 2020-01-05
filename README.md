@@ -3,16 +3,48 @@
 For our Semesterproject "porting games to webassembly" we decided to port a whole emulator to run games on it. Therefore we forked the em-dosbox from dreamlayers (https://github.com/dreamlayers/em-dosbox.git) and adapted it for our purposes.
 
 
-# Using DOSBox via webassembly - prerequisites
+# Getting startet
 
+* Get git to clone this repository and the emscripten repository
 * Get yourself the neccessary tools to port to webassembly, follow https://webassembly.org/getting-started/developers-guide/
-* Git is usefull but you don't have to use it
-* You need CMake for the ```make``` process
-* A compiler like GCC could be neccessary
-* You need Python 2.7.x, be shure to have it parallel to Python 3.x
+  * Get the fastcomp emscripten toolchain for your system
+    * for ubuntu 16.04LTS do the following
+      * to do so intead of running ```./emsdk install latest``` run ```./emsdk install latest-fastcomp```
+      * same goes for ```./emsdk activate latest``` run ```./emsdk activate latest-fastcomp```
+  * You need CMake for the ```make``` process
+  * A compiler like GCC could be neccessary
+  * You need Python 2.7.x, be shure to have it parallel to Python 3.x
 
 
-# Getting DOSBox to work
+# Step by step guide to run games in ubuntu 16.04LTS
+
+## Get a working DOSBox in webasembly
+* Clone our repository em-dosbox https://github.com/Semester-Project-WS19-20/em-dosbox.git with git
+* Following the instructions from `README-dream`
+  * ! make sure emscritpen toolchain is available, if not go to emsdk folder and run ```source ./emsdk_env.sh --build=Release```
+  * run ```./autogen.sh```
+  * if you get the error ```./autogen.sh: 8: ./autogen.sh: aclocal: not found``` you need automake as follows
+    * run ```apt-get install autotools-dev```
+    * run ```apt-get install automake```
+    * run ```./autogen.sh``` again
+  * run ```emconfigure ./configure --enable-wasm --disable-sync```
+  * run ```make``` to build
+
+## Test your DOSBox
+* in your dosbox folder run ```emrun --no_browser --port 8080 .```
+* open a browser
+* 
+
+Next step is to run games on it. In this repository we have following games
+
+* rogue - freeware
+* c-dogs - freeware
+* Z - playable Demo
+* Beneath a steel sky (BASS) - full version 
+
+If you want to run other DOS-Games 
+
+# Changes to dreamlayers DOSBox to make games run
 
 We tried using the instructions in the `README-dream`, but with it no game was running. After searching for a solution we followed the steps below to get the games to run with DOSBox.
  
@@ -21,11 +53,6 @@ We tried using the instructions in the `README-dream`, but with it no game was r
     * changed to _dosbox_LDFLAGS=-s TOTAL_MEMORY=134217728 -s ALLOW_MEMORY_GROWTH=0 **-s FORCE_FILESYSTEM=1**_
   * line 32
     * changed to _dosbox_LDFLAGS+=-s WASM=1 **-s 'BINARYEN_TRAP_MODE="clamp"'**_
-* Followed the instructions for compiling from the `README-dream`
-  * ran ```./autogen.sh```
-  * ! For the next step the emscripten toolchain is needed, if not available run ```source ./emsdk_env.sh --build=Release``` in emsdk folder
-  * ran ```emconfigure ./configure --enable-wasm --disable-sync```
-  * ran ```make``` to build
 
 
 # Running Games
